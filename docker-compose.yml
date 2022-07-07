@@ -2,3 +2,8 @@ version: "3"
 services:
   api: 
     build: ./api
+    # comand execute when server start 
+    command: npm run start
+    #port which appear outside
+    ports: 
+      - "3000:3000" 
