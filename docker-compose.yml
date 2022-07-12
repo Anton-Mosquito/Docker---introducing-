@@ -4,6 +4,11 @@ services:
     build: ./api
     # comand execute when server start 
     command: npm run start
+    # if container down docker compose try restart container
+    restart: unless-stopped
     #port which appear outside
     ports: 
-      - "3000:3000" 
+      - "3000:3000"
+    environment: 
+      - PORT=3000
+      - HOST=http://realworld-docker.com
