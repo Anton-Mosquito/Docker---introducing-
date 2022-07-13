@@ -20,3 +20,8 @@ services:
   # download image with mongo service
   api_db:
     image: mongo:latest
+    volumes: 
+      - mongodb_api:/data/db
+
+volumes:
+  mongodb_api:
