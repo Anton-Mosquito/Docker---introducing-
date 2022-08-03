@@ -1,6 +1,13 @@
 version: "3"
 
 services:
+  frontend: 
+    command: npm run start
+    # comands for working with console
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./frontend/src:/usr/src/app/arc
   api: 
     command: npm run dev
     volumes:

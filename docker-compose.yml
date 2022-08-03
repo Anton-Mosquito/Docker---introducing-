@@ -3,13 +3,10 @@ services:
   frontend: 
     build: ./frontend
     container_name: realworld-docker-frontend
-    command: npm run start
+    command: serve -s build -l 3000
     ports: 
       - "3000:3000"
     restart: unless-stopped
-    # comane for working with console
-    stdin_open: true
-    tty: true
 
   api: 
     build: ./api

@@ -8,8 +8,6 @@ RUN npm install
 
 COPY . .
 
-# open port 3000 which we define in index.js
-EXPOSE 3000
+RUN npm run build
 
-# comand for start server
-CMD ["node", "run start"]
+Run npm install -g serve
