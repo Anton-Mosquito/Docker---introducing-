@@ -1,4 +1,4 @@
-FROM node:13.12.0-alpine
+FROM node:16.16.0-alpine3.16
 
 WORKDIR /usr/src/app
 
@@ -10,4 +10,4 @@ COPY . .
 
 RUN npm run build
 
-Run npm install -g serve
+RUN npm install -g serve
