@@ -1,7 +1,10 @@
 version: "3"
 
 services:
-  frontend: 
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile.dev
     command: npm run start
     # comands for working with console
     stdin_open: true
@@ -11,4 +14,13 @@ services:
   api: 
     command: npm run dev
     volumes:
-      - ./api/src:/usr/app/src
+      - ./api/src:/usr/src/app/src
+
+  auth: 
+    command: npm run dev
+    volumes:
+      - ./auth/src:/usr/src/app/src
+
+  nginx:
+    volumes:
+      - ./nginx/nginx.conf.dev:/etc/nginx/conf.d/nginx.conf

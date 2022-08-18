@@ -2,7 +2,9 @@ version: "3"
 
 services:
   frontend: 
-    build: ./frontend
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile.prod
     container_name: realworld-docker-frontend
     command: serve -s build -l 3000
     # ports:
@@ -24,7 +26,7 @@ services:
     #   - "3001:3001"
     environment: 
       - PORT=3001
-      - HOST=http://realworld.com
+    # - HOST=http://realworld.com
       # any url starts "mongodb" further host "api_db" port "27017" database "api"
       - MONGO_URL=mongodb://api_db:27017/api
       - AUTH_API_URL=http://auth:3002/api
@@ -42,7 +44,7 @@ services:
     #   - "3002:3002"
     environment:
       - PORT=3002
-      - HOST=http://realworld.com
+    # - HOST=http://realworld.com
       - MONGO_URL=mongodb://auth_db:27017/auth
       - API_URL=http://api:3001/api
     depends_on:
@@ -78,6 +80,8 @@ services:
       - ./nginx/nginx.conf.prod:/etc/nginx/conf.d/nginx.conf
     depends_on:
       - frontend
+      - api
+      - auth
     networks:
       - realworld-docker-network
 
